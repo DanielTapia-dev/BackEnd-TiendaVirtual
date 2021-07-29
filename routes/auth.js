@@ -1,7 +1,7 @@
 //Rutas de autentificacion
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { crearUsuario, loginUsuario, renewToken } = require('../controller/auth');
+const { crearUsuario, loginUsuario, renewToken, actualizarUsuario } = require('../controller/auth');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
@@ -26,6 +26,13 @@ router.post('/', [
     check('password', 'La contraseña debe tener más de 6 caracteres').isLength({ min: 6 }),
     validarCampos
 ], loginUsuario);
+
+//Actualizar usuario
+router.put('/:id', [
+    check('email', 'El email es obligatorio').not().isEmpty(),
+    check('email', 'El email es incorrecto').isEmail(),
+    validarCampos
+], actualizarUsuario);
 
 //Validar y revalidar token
 router.get('/renew', validarJWT, renewToken);

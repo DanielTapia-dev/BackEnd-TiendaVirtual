@@ -1,11 +1,11 @@
 const { response } = require("express");
 const Usuario = require('../models/User');
 const bcrypt = require('bcryptjs');
-const { generarJWT } = require('../helpers/jwt')
+const { generarJWT } = require('../helpers/jwt');
 
 const crearUsuario = async (req, res = response) => {
 
-    const { email, nombre_1, apellido_1, password } = req.body;
+    const { email, nombre_1, nombre_2, apellido_1, apellido_2, password } = req.body;
 
     try {
         //Verificar si el email existe en la base de datos
@@ -105,8 +105,62 @@ const renewToken = async (req, res = response) => {
         token
     });
 }
+
+const actualizarUsuario = async (req, res = response) => {
+    const uid = req.params.id;
+
+    try {
+
+        let dbUser = await Usuario.findById(uid);
+
+        if (!dbUser) {
+            return res.status(404).json({
+                ok: true,
+                msg: 'No existe un usuario con ese ID'
+            });
+        }
+
+        //Actualizaciones del usuario 
+        const campos = req.body;
+        delete campos.role;
+        if (campos.password) {
+            if (campos.password.length >= 6) {
+                // Encriptar la contraseña mediante HASH
+                const salt = bcrypt.genSaltSync(10);
+                campos.password = bcrypt.hashSync(campos.password, salt);
+                const usuarioActualizado = await Usuario.findByIdAndUpdate(uid, campos);
+                dbUser = await Usuario.findById(uid);
+                //Respuesta del servicio
+                res.json({
+                    ok: true,
+                    dbUser
+                });
+            } else {
+                return res.status(500).json({
+                    ok: false,
+                    msg: "La contraseña es invalida"
+                });
+            }
+        } else {
+            const usuarioActualizado = await Usuario.findByIdAndUpdate(uid, campos);
+            dbUser = await Usuario.findById(uid);
+            //Respuesta del servicio
+            res.json({
+                ok: true,
+                dbUser
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: "Contactese con soporte"
+        });
+    }
+}
 module.exports = {
     crearUsuario,
     loginUsuario,
-    renewToken
+    renewToken,
+    actualizarUsuario
 }

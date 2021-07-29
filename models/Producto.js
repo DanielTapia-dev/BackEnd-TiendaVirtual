@@ -17,6 +17,10 @@ const ProductoSchema = Schema({
         type: Boolean,
         require: true
     },
+    img: {
+        type: String,
+        require: true
+    },
 });
 
 module.exports = model('Producto', ProductoSchema);

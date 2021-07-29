@@ -17,12 +17,7 @@ router.post('/carrito', [
     validarCampos,
 ], crearCarrito);
 
-router.put('/carrito/:id', [
-    check('usuario', 'El usuario es obligatorio').not().isEmpty(),
-    check('producto', 'El producto es obligatorio').not().isEmpty(),
-    check('cantidad', 'La cantidad es obligatoria').not().isEmpty(), validarJWT, validarAdministrador, validarCampos
-], actualizarCarrito);
-
+//Obtener las compras de un cliente, aqui se verifica si aun existe stock de ese producto antes de listar y si ya no hay stock se actualizan los valores o se borra esa compra-carrito
 router.get('/carritos/:usuario', [
     check('usuario', 'El usuario es obligatorio').not().isEmpty(),
     validarJWT, validarStockGeneral, validarCampos

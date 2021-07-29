@@ -88,10 +88,11 @@ const actualizarCarrito = async (req, res = response) => {
     }
 }
 
+//Funcion que obtiene los productos de un carrito de un cliente en especifico
 const obtenerCarritos = async (req, res = response) => {
-    const id = req.params.id
+    const usuario = req.params.usuario
     try {
-        const carritos = await Carrito.find(id);
+        const carritos = await Carrito.find({ usuario: usuario });
         return res.status(400).json({
             ok: false,
             carritos
@@ -104,22 +105,23 @@ const obtenerCarritos = async (req, res = response) => {
     }
 }
 
+//Funcion que borra el producto de un carrito
 const borrarCarrito = async (req, res = response) => {
     const uid = req.params.id;
     try {
-        const dbProducto = await Producto.findById(uid);
+        const dbCarrito = await Carrito.findById(uid);
 
-        if (!dbProducto) {
+        if (!dbCarrito) {
             return res.status(400).json({
                 ok: false,
                 msg: "El producto no existe"
             });
         }
 
-        await Producto.findByIdAndDelete(uid);
+        await Carrito.findByIdAndDelete(uid);
         return res.status(400).json({
             ok: false,
-            msg: "Producto eliminado"
+            msg: "Producto eliminado del carrito"
         });
     } catch (error) {
         return res.status(500).json({

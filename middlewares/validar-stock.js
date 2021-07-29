@@ -32,7 +32,6 @@ const validarStock = async (req, res = response, next) => {
             }
         }
     } catch (error) {
-        console.log('token global')
         return res.status(401).json({
             ok: false,
             msg: 'Error contacte con soporte'

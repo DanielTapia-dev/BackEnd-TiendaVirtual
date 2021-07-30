@@ -80,6 +80,7 @@ const loginUsuario = async (req, res = response) => {
             ok: true,
             uid: dbUser.id,
             name: dbUser.nombre_1,
+            role: dbUser.role,
             token
         })
 

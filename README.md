@@ -17,6 +17,13 @@
 <li>Considero que el BackEnd se encuentra 100% funcional con todas las especificaciones que se entrego no obstante al FrontEnd le faltan algunas caracteristicas.</li>
 </ul>
 <p></p>
+
+<p></p>
+<ul>
+<li>La base de datos también se encuentra subida en el servidor de Mongo por lo que no debería haber ningún inconveniente al usarla desde cualquier lado.</li>
+</ul>
+<p></p>
+
 <p>Muchas gracias.</p>
 
 # BackEnd-TiendaVirtual

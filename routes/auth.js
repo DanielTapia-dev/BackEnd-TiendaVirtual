@@ -1,7 +1,7 @@
 //Rutas de autentificacion
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { crearUsuario, loginUsuario, renewToken, actualizarUsuario } = require('../controller/auth');
+const { crearUsuario, loginUsuario, renewToken, actualizarUsuario, obtenerDatos } = require('../controller/auth');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
@@ -36,5 +36,8 @@ router.put('/:id', [
 
 //Validar y revalidar token
 router.get('/renew', validarJWT, renewToken);
+
+//obtener datos del usuario por id
+router.get('/datosUsuario/:id', validarJWT, obtenerDatos);
 
 module.exports = router;

@@ -106,6 +106,32 @@ const renewToken = async (req, res = response) => {
     });
 }
 
+const obtenerDatos = async (req, res = response) => {
+    const uid = req.params.id;
+
+    try {
+        let dbUser = await Usuario.findById(uid);
+        if (!dbUser) {
+            return res.status(404).json({
+                ok: true,
+                msg: 'No existe un usuario con ese ID'
+            });
+        } else {
+            dbUser.password = "";
+            //Respuesta del servicio
+            return res.json({
+                ok: true,
+                dbUser
+            });
+        }
+    } catch (error) {
+        return res.status(404).json({
+            ok: true,
+            msg: 'No existe un usuario con ese ID'
+        });
+    }
+}
+
 const actualizarUsuario = async (req, res = response) => {
     const uid = req.params.id;
 
@@ -162,5 +188,6 @@ module.exports = {
     crearUsuario,
     loginUsuario,
     renewToken,
-    actualizarUsuario
+    actualizarUsuario,
+    obtenerDatos
 }

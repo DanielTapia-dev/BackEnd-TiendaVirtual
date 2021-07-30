@@ -93,7 +93,7 @@ const obtenerCarritos = async (req, res = response) => {
     const usuario = req.params.usuario
     try {
         const carritos = await Carrito.find({ usuario: usuario });
-        return res.status(400).json({
+        return res.status(200).json({
             ok: false,
             carritos
         });

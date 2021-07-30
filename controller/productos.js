@@ -117,6 +117,21 @@ const obtenerProducto = async (req, res = response) => {
     }
 }
 
+const obtenerProductosActivos = async (req, res = response) => {
+    try {
+        const productos = await Producto.find({ estado: true });
+        return res.status(400).json({
+            ok: true,
+            productos
+        });
+    } catch (error) {
+        return res.status(500).json({
+            ok: false,
+            msg: "Error contactese con soporte"
+        });
+    }
+}
+
 const borrarProductos = async (req, res = response) => {
     const uid = req.params.id;
     try {
@@ -189,5 +204,6 @@ module.exports = {
     obtenerProductos,
     borrarProductos,
     activateProducto,
-    obtenerProducto
+    obtenerProducto,
+    obtenerProductosActivos
 }

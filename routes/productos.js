@@ -11,7 +11,7 @@ router.post('/producto', [
     check('nombre', 'La nombre es obligatoria').not().isEmpty(),
     check('precioUnitario', 'El precio es obligatorio y tiene que ser un numero mayor a cero').not().isEmpty(),
     check('stock', 'El stock es obligatorio').not().isEmpty(),
-    check('estado', 'El estado es obligatorio').not().isEmpty(), validarJWT, validarAdministrador,
+    check('estado', 'El estado es obligatorio').not().isEmpty(), validarAdministrador,
     validarCampos,
 ], crearProducto);
 

@@ -5,7 +5,7 @@ const obtenerHistoriales = async (req, res = response) => {
     const usuario = req.params.usuario;
     try {
         const historiales = await HistorialCompra.find({ usuario: usuario })
-            .populate('usuario', 'email nombre_1 apellido_1').populate('compra', 'total');
+            .populate('usuario', 'email nombre_1 apellido_1').populate('compra', 'total', 'fecha');
         return res.status(400).json({
             ok: true,
             historiales

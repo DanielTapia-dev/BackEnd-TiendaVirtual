@@ -11,13 +11,13 @@ router.post('/producto', [
     check('nombre', 'La nombre es obligatoria').not().isEmpty(),
     check('precioUnitario', 'El precio es obligatorio y tiene que ser un numero mayor a cero').not().isEmpty(),
     check('stock', 'El stock es obligatorio').not().isEmpty(),
-    check('estado', 'El estado es obligatorio').not().isEmpty(), validarAdministrador,
+    check('estado', 'El estado es obligatorio').not().isEmpty(), validarJWT, validarAdministrador,
     validarCampos,
 ], crearProducto);
 
 router.put('/producto/:id', [validarJWT, validarAdministrador, validarCampos], actualizarProducto);
 
-router.get('/productos', [validarJWT, validarCampos], obtenerProductos);
+router.get('/productos', obtenerProductos);
 
 router.get('/producto/:id', [validarJWT, validarCampos], obtenerProducto);
 

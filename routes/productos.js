@@ -19,7 +19,7 @@ router.put('/producto/:id', [validarJWT, validarAdministrador, validarCampos], a
 
 router.get('/productos', obtenerProductos);
 
-router.get('/productos', obtenerProductosActivos);
+router.get('/productosActivos', obtenerProductosActivos);
 
 router.get('/producto/:id', [validarJWT, validarCampos], obtenerProducto);
 

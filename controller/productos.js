@@ -28,7 +28,7 @@ const crearProducto = async (req, res = response) => {
         await dbProducto.save();
 
         // Generar respuesta exitosa
-        return res.status(201).json({
+        return res.status(200).json({
             ok: true,
             nombre: dbProducto.nombre
         });
@@ -89,7 +89,7 @@ const actualizarProducto = async (req, res = response) => {
 const obtenerProductos = async (req, res = response) => {
     try {
         const productos = await Producto.find();
-        return res.status(400).json({
+        return res.status(200).json({
             ok: true,
             productos
         });
@@ -105,7 +105,7 @@ const obtenerProducto = async (req, res = response) => {
     const id = req.params.id;
     try {
         const productos = await Producto.findById(id);
-        return res.status(400).json({
+        return res.status(200).json({
             ok: false,
             productos
         });
@@ -120,7 +120,7 @@ const obtenerProducto = async (req, res = response) => {
 const obtenerProductosActivos = async (req, res = response) => {
     try {
         const productos = await Producto.find({ estado: true });
-        return res.status(400).json({
+        return res.status(200).json({
             ok: true,
             productos
         });

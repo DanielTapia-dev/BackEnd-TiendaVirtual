@@ -90,7 +90,7 @@ const obtenerProductos = async (req, res = response) => {
     try {
         const productos = await Producto.find();
         return res.status(400).json({
-            ok: false,
+            ok: true,
             productos
         });
     } catch (error) {

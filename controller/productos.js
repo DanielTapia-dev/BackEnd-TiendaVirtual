@@ -119,10 +119,17 @@ const obtenerProducto = async (req, res = response) => {
 
 const obtenerProductosActivos = async (req, res = response) => {
     try {
-        const productos = await Producto.find({ estado: true });
+        let productos = await Producto.find({ estado: true });
+        let productosActivos = [];
+        for (let i = 0; i < productos.length; i++) {
+            const element = productos[i];
+            if (element.stock > 0) {
+                productosActivos.push(element);
+            }
+        }
         return res.status(200).json({
             ok: true,
-            productos
+            productosActivos
         });
     } catch (error) {
         return res.status(500).json({

@@ -35,9 +35,9 @@ const validarStockGeneral = async (req, res = response, next) => {
         }
     };
     if (listaErrores.length > 0) {
-        return res.status(401).json({
+        return res.status(500).json({
             ok: false,
-            msg: 'Existen productos fuera de stock - Se han actualizado las existencias en el carrito',
+            msg: 'Existen productos fuera de stock - Se han actualizado las existencias en el carrito al maximo de unidades',
             listaErrores
         })
     }

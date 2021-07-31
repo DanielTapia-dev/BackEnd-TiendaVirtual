@@ -92,7 +92,9 @@ const actualizarCarrito = async (req, res = response) => {
 const obtenerCarritos = async (req, res = response) => {
     const usuario = req.params.usuario
     try {
-        const carritos = await Carrito.find({ usuario: usuario });
+        //const carritos = await Carrito.find({ usuario: usuario });
+        const carritos = await Carrito.find({ usuario: usuario })
+            .populate('usuario', 'email nombre_1 apellido_1').populate('producto', 'nombre precioUnitario');
         return res.status(200).json({
             ok: false,
             carritos

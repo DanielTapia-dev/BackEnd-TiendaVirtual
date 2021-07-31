@@ -8,9 +8,9 @@
 <li>Para correr la prueba tecnica se necesita descargar el front-end y correr el comando yarn para recuperar los paquetes.</li>
 <li>Despues se puede correr el FrontEnd directamente con el comando yarn dev.</li>
 <li>Considero que el BackEnd se encuentra 100% funcional con todas las especificaciones que se entrego no obstante al FrontEnd le faltan algunas caracteristicas.</li>
-<li>Una vez el proyecto del frontend se este ejecutando se puede visualizar el mismo desde la direccion&nbsp;<a href="http://localhost:3000/">http://localhost:3000/</a>&nbsp;al ingresar por primera vez la pagina deberia mostrarse vac&iacute;a esto es por que la base de datos aun no ha sido creada localmente, para continuar por favor cree un usuario en el apartado Iniciar secion - Registrarse en el frontend.</li>
-<li>Una vez realizado el paso anterior desde MongoDB Compass ya deberia mostrarse la base de datos como test.</li>
-<li>En esta base de datos se recomienda crear una coleccion productos e importar el archivo productos que se encuentra adjunto.</li>
+<li style="color: #FF3600;">Una vez el proyecto del frontend se este ejecutando se puede visualizar el mismo desde la direccion&nbsp;<a href="http://localhost:3000/">http://localhost:3000/</a>&nbsp;al ingresar por primera vez la pagina deberia mostrarse vac&iacute;a esto es por que la base de datos aun no ha sido creada localmente, para continuar por favor cree un usuario en el apartado Iniciar secion - Registrarse en el frontend.</li>
+<li style="color: #FF3600;">Una vez realizado el paso anterior desde MongoDB Compass ya deberia mostrarse la base de datos como test.</li>
+<li style="color: #FF3600;">En esta base de datos se recomienda crear una coleccion productos e importar el archivo productos que se encuentra adjunto.</li>
 <li>Esto se debe a que el frontend no se encuentra completo y faltan las funciones del administrador, unicamente esta creada la pagina con la ruta protegida a la misma que se puede acceder desde el apartado Mi cuenta pero ingresando unicamente con un usuario de role administrador (debe escribirse asi exactamente).</li>
 <li>Finalmente si se desea se puede probar los diferentes End-points de la API Rest desde postman tambi&eacute;n se adjuntan los mismos.</li>
 </ul>
